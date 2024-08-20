@@ -1,4 +1,4 @@
-const returnOrThrow = (convertedString, originalString, stringCase) => {
+export const returnOrThrow = (convertedString, originalString, stringCase) => {
   // return converted string if successful
   if (typeof convertedString === 'string' && convertedString !== '') {
     return convertedString
@@ -9,7 +9,7 @@ const returnOrThrow = (convertedString, originalString, stringCase) => {
   )
 }
 
-const toCamelCase = (string: string) => {
+export const toCamelCase = (string: string) => {
   const convertedString: string = string
     .trim()
     .replace(/['"]/g, '') // Remove any single or double quotes
@@ -23,7 +23,7 @@ const toCamelCase = (string: string) => {
   return returnOrThrow(convertedString, string, 'camelCase')
 }
 
-const toKebabCase = (string: string) => {
+export const toKebabCase = (string: string) => {
   const convertedString = string
     .replace(/['"]/g, '') // Remove any single or double quotes
     .replace(/([a-z])([A-Z])/g, '$1 $2') // Add space between lowercase and uppercase letters
@@ -38,15 +38,20 @@ const toKebabCase = (string: string) => {
 }
 
 const transformName = (name, nameConversion = 'default') => {
+  // Replace numbers with letters
+  const convertedName = name.replace(
+    /^(\d+)([a-zA-Z])/g,
+    (match, p1, p2) => p2.repeat(parseInt(p1)) + p2
+  )
   // if camelCase
   if (nameConversion === 'camelCase') {
-    return toCamelCase(name)
+    return toCamelCase(convertedName)
   }
   // if kebabCase
   if (nameConversion === 'kebabCase') {
-    return toKebabCase(name)
+    return toKebabCase(convertedName)
   }
-  return name.trim()
+  return convertedName.trim().toLowerCase()
 }
 export default transformName
 export const __testing = {
