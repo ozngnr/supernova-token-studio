@@ -2,7 +2,7 @@
 import { Settings } from '@typings/settings'
 
 export const defaultSettings: Settings = {
-  filename: 'design-tokens',
+  filename: 'designTokens',
   extension: '.tokens.json',
   nameConversion: 'default',
   tokenFormat: 'standard',
@@ -34,7 +34,7 @@ export const defaultSettings: Settings = {
     size: 'size, sizes',
     spacing: 'spacing',
     motion: 'motion',
-    opacity: 'opacity, opacities'
+    opacity: 'opacity, opacities',
   },
   exports: {
     color: true,
@@ -50,6 +50,6 @@ export const defaultSettings: Settings = {
     spacing: true,
     motion: true,
     opacity: true,
-    variables: true
-  }
+    variables: true,
+  },
 }

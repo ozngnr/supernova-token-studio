@@ -4,8 +4,9 @@ import { tokenTypes } from '@config/tokenTypes'
 import { getVariableTypeByValue } from '../../src/utilities/getVariableTypeByValue'
 import { changeNotation } from '../../src/utilities/changeNotation'
 
-function handleVariableAlias (variable, value, mode) {
+function handleVariableAlias(variable, value, mode) {
   const resolvedAlias = figma.variables.getVariableById(value.id)
+  console.log(resolvedAlias.name)
   const collection = figma.variables.getVariableCollectionById(
     resolvedAlias.variableCollectionId
   )
@@ -15,16 +16,12 @@ function handleVariableAlias (variable, value, mode) {
     category: getVariableTypeByValue(
       Object.values(resolvedAlias.valuesByMode)[0]
     ),
-    values: `{${collection.name.toLowerCase()}.${changeNotation(
-      resolvedAlias.name,
-      '/',
-      '.'
-    )}}`,
+    values: `{${collection.name}.${resolvedAlias.name}}`,
 
     // this is being stored so we can properly update the design tokens later to account for all
     // modes when using aliases
-    aliasCollectionName: collection.name.toLowerCase(),
-    aliasMode: mode
+    aliasCollectionName: collection.name,
+    aliasMode: mode,
   }
 }
 

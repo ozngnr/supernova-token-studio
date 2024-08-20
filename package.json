@@ -1,5 +1,5 @@
 {
-  "name": "design-tokens",
+  "name": "supernova-token-studio",
   "version": "6.10.6",
   "description": "Export design tokens from Figma",
   "main": "plugin.js",

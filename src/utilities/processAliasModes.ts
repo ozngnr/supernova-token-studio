@@ -16,10 +16,7 @@ const processAliasModes = (variables) => {
 
     collector.push({
       ...variable,
-      values: variable.values.replace(
-        `{${aliasCollectionName}.`,
-        `{${aliasCollectionName}.${aliasMode.name}.`
-      )
+      values: variable.values,
     })
 
     return collector
