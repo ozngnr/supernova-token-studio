@@ -41,7 +41,7 @@ const transformName = (name, nameConversion = 'default') => {
   // Replace numbers with letters
   const convertedName = name.replace(
     /^(\d+)([a-zA-Z])/g,
-    (match, p1, p2) => p2.repeat(parseInt(p1)) + p2
+    (match, p1, p2) => p2.repeat(parseInt(p1) - 1) + p2
   )
   // if camelCase
   if (nameConversion === 'camelCase') {
