@@ -7,6 +7,18 @@ const processAliasModes = (variables) => {
       return collector
     }
 
+    if (
+      variable.aliasMode.name === 'dark' ||
+      variable.aliasMode.name === 'light'
+    ) {
+      if (variable.values.includes('theme')) {
+        variable.values = variable.values.replace(
+          'theme',
+          `theme.${variable.aliasMode.name}`
+        )
+      }
+    }
+    // console.log(variable)
     // alias mode singular because only one is shown
     const { aliasMode, aliasCollectionName } = variable
 

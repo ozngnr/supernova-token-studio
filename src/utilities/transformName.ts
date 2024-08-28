@@ -40,7 +40,7 @@ export const toKebabCase = (string: string) => {
 const transformName = (name, nameConversion = 'default') => {
   // Replace numbers with letters
   const convertedName = name.replace(
-    /^(\d+)([a-zA-Z])/g,
+    /^(\d+)(x)/g,
     (match, p1, p2) => p2.repeat(parseInt(p1) - 1) + p2
   )
   // if camelCase
